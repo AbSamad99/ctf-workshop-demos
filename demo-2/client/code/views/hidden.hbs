@@ -1,0 +1,26 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hidden Page</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <form>
+      <h2>Hidden Page</h2>
+      <p id="hiddenText">Validating login.....</p>
+    </form>
+
+    <script>
+      const getToken = () => { return localStorage.getItem('token'); }; const
+      validateToken = async (token) => { try { const response = await
+      fetch('/validate-token', { method: 'POST', headers: { 'Content-Type':
+      'application/json', 'Authorization': `Bearer ${token}` } }); const data =
+      await response.json(); if (response.ok) {
+      document.getElementById('hiddenText').innerText = data.message; } else {
+      window.location.href = '/'; } } catch (error) { console.error('Error:',
+      error); } }; const token = getToken(); if (token) { validateToken(token);
+      } else { window.location.href = '/'; }
+    </script>
+  </body>
+</html>

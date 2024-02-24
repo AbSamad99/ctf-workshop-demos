@@ -1,0 +1,2 @@
+The IT team has designated the domain of the admin server as as-1.
+Jawab's workstation can be reached at ws-2.

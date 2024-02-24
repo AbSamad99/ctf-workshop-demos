@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  as-1:
+    build:
+      context: ./as-1
+      dockerfile: ../dockerfiles/admin-server/Dockerfile
+      args:
+        USER1: jawab
+        PASSWORD1: 123password
+        USER2: kitab
+        PASSWORD2: yekissebimalumnaihona26#
+    container_name: as-1
+    hostname: as-1
+    networks:
+      - network-demo-3-admin
+
+  ws-1:
+    build:
+      context: ./ws-1
+      dockerfile: ../dockerfiles/workstation/Dockerfile
+      args:
+        USER: hisab
+        PASSWORD: password123
+    container_name: ws-1
+    hostname: ws-1
+    networks:
+      - network-demo-3-workstation
+    ports:
+      - "2222:22"
+    depends_on:
+      - as-1
+
+  ws-2:
+    build:
+      context: ./ws-2
+      dockerfile: ../dockerfiles/workstation/Dockerfile
+      args:
+        USER: jawab
+        PASSWORD: 123password
+    container_name: ws-2
+    hostname: ws-2
+    networks:
+      - network-demo-3-workstation
+      - network-demo-3-admin
+    depends_on:
+      - as-1
+
+networks:
+  network-demo-3-workstation:
+  network-demo-3-admin:

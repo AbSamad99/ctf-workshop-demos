@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  postgres:
+    hostname: postgres
+    container_name: postgres
+    image: postgres:latest
+    networks:
+      - network-demo-2
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=demo-2
+
+  client:
+    build:
+      context: ./client
+    container_name: client
+    hostname: client
+    networks:
+      - network-demo-2
+    ports:
+      - "8080:80"
+    environment:
+      - DB_USER=postgres
+      - DB_HOST=postgres
+      - DB_DATABASE=demo-2
+      - DB_PASSWORD=postgres
+      - DB_PORT=5432
+    depends_on:
+      - postgres
+
+networks:
+  network-demo-2:
