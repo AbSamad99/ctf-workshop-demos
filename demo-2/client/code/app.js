@@ -37,8 +37,8 @@ const initialiseDB = async () => {
 
     const insertQuery = `
             insert into users (name, username, password, account_type) values
-            ('Administrator','admin', 'cookie', 1),
-            ('John','johnny', 'password123', 2)
+            ('Administrator','admin', 'superdupercomplexpassword12%', 1),
+            ('Hisab','hisab', 'password123', 2)
           `;
     await pool.query(insertQuery);
 

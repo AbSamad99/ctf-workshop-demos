@@ -7,9 +7,9 @@ services:
       dockerfile: ../dockerfiles/admin-server/Dockerfile
       args:
         USER1: jawab
-        PASSWORD1: 123password
+        PASSWORD1: mysecretpassword
         USER2: kitab
-        PASSWORD2: yekissebimalumnaihona26#
+        PASSWORD2: kitabpasswordfortheworkshop67#
     container_name: as-1
     hostname: as-1
     networks:
@@ -37,7 +37,7 @@ services:
       dockerfile: ../dockerfiles/workstation/Dockerfile
       args:
         USER: jawab
-        PASSWORD: 123password
+        PASSWORD: qwerty12345
     container_name: ws-2
     hostname: ws-2
     networks:
